@@ -1,0 +1,19 @@
+//采用什么样的语法规则
+syntax = "proto3";
+//生成的go文件处在那个目录哪个包里   .表示当前目录生成 ，service代表了生成go文件的包名是service
+option go_package="./service";
+
+//需要定义一个服务接受客户端的参数，再返回服务器响应。
+
+service SayHello{
+  rpc SayHello(HelloRequest) returns(HelloResponse){}
+}
+message HelloRequest{
+  string requestName=1;//这里不是变量的赋值，而是定义message中的位置
+  //消息号生成在第几个
+}
+message HelloResponse{
+  string responseMsg=1;
+
+}
+//proto 文件类似约定所以需要再客户端和服务端都有
